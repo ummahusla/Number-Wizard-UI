@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class NumberWizard : MonoBehaviour {
 	// Declaring global variables
 	int min;
 	int max;
 	int guess;
+	int maxGuessesAllowed = 10;
+	
+	public Texture text;
 	
 	// Use this for initialization
 	void Start() {
@@ -18,6 +22,7 @@ public class NumberWizard : MonoBehaviour {
 		min = 1;
 		max = 1000;
 		guess = 500;
+		
 		/*
 		print("---------------------");
 		print("Welcome to Number Wizard!");
@@ -43,8 +48,16 @@ public class NumberWizard : MonoBehaviour {
 	// Make the next guess
 	void NextGuess() {
 		guess = (max + min) / 2;
+		/*
 		print("Higher or lower than " + guess);
 		print("Up arrow = higher, down = lower, return = equal.");
+		*/
+		maxGuessesAllowed--;
+		
+		// No allowed guesses left, player won
+		if(maxGuessesAllowed <= 0) {
+			Application.LoadLevel("Win");
+		}
 	}
 	
 }
