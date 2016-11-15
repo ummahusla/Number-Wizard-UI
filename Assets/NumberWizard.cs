@@ -9,7 +9,7 @@ public class NumberWizard : MonoBehaviour {
 	int guess;
 	int maxGuessesAllowed = 10;
 	
-	public Texture text;
+	public Text text;
 	
 	// Use this for initialization
 	void Start() {
@@ -52,6 +52,7 @@ public class NumberWizard : MonoBehaviour {
 		print("Higher or lower than " + guess);
 		print("Up arrow = higher, down = lower, return = equal.");
 		*/
+		text.text = guess.ToString();
 		maxGuessesAllowed--;
 		
 		// No allowed guesses left, player won
