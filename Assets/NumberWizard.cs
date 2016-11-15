@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NumberWizards : MonoBehaviour {
+public class NumberWizard : MonoBehaviour {
 	// Declaring global variables
 	int min;
 	int max;
 	int guess;
 	
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		StartGame();
 	}
 	
@@ -18,32 +18,26 @@ public class NumberWizards : MonoBehaviour {
 		min = 1;
 		max = 1000;
 		guess = 500;
-		
+		/*
 		print("---------------------");
 		print("Welcome to Number Wizard!");
 		print("Pick a number in your head, but don't tell to me.");
 		print("The lowest number you can pick is " + min + " while the highest number is " + max + ".");
 		print("Is the number is higher or lower than "+ guess + "?");
 		print("Up arrow = higher, down = lower, return = equal.");
-		
+		*/
 		max = max + 1;
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public void GuessHigher() {
+		min = guess;
+		NextGuess();
+	}
 	
-		if(Input.GetKeyDown(KeyCode.UpArrow)) {
-			min = guess;
-			NextGuess();
-		} else if(Input.GetKeyDown(KeyCode.DownArrow)) {
-			max = guess;
-			NextGuess();
-		} else if(Input.GetKeyDown(KeyCode.Return)) {
-			print("Victory!");
-			StartGame();
-		}
-		
+	public void GuessLower() {
+		max = guess;
+		NextGuess();
 	}
 	
 	// Make the next guess
